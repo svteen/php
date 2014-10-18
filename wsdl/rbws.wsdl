@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<definitions name="rbws" targetNamespace="urn:rbws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:rbws" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<types xmlns="http://schemas.xmlsoap.org/wsdl/" />
+<portType name="rbwsPort"><operation name="show">
+<input message="tns:showRequest" />
+<output message="tns:showResponse" />
+</operation>
+<operation name="getMax">
+<input message="tns:getMaxRequest" />
+<output message="tns:getMaxResponse" />
+</operation>
+</portType>
+<binding name="rbwsBinding" type="tns:rbwsPort">
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+<operation name="show">
+<soap:operation soapAction="urn:rbws#Myws#show" />
+<input><soap:body use="encoded" namespace="urn:rbws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:rbws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="getMax">
+<soap:operation soapAction="urn:rbws#Myws#getMax" />
+<input><soap:body use="encoded" namespace="urn:rbws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:rbws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+</binding>
+<service name="rbws">
+<documentation />
+<port name="rbwsPort" binding="tns:rbwsBinding"><soap:address location="http://localhost:80/server_wsdl.php" />
+</port>
+</service>
+<message name="showRequest">
+</message>
+<message name="showResponse">
+<part name="show" type="xsd:string" />
+</message>
+<message name="getMaxRequest">
+<part name="one" type="xsd:string" />
+<part name="two" type="xsd:string" />
+</message>
+<message name="getMaxResponse">
+<part name="getMax" type="xsd:string" />
+</message>
+</definitions>
