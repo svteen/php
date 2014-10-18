@@ -11,7 +11,7 @@ if($action == 'get' ){
 }
 //No wsdl
 //$server = new SoapServer(null, array("location"=>"http://localhost/server_wsdl.php", "uri"=>"server_wsdl.php"));
-$server = new SoapServer('./wsdl/rbws.wsdl', array('soap_version' => SOAP_1_2));
+$server = new SoapServer('rbws.wsdl', array('soap_version' => SOAP_1_2));
 $server->setClass('Myws');   
 //$server->addFunction('echoString');
 //$server->addFunction(SOAP_FUNCTIONS_ALL); 
